@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>its Mimi!</title>
+  <title>its Sweetie Belle!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Frutiger Aero font -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Quicksand:wght@700&display=swap" rel="stylesheet">
@@ -35,7 +35,6 @@
       height: 100vh;
       pointer-events: none;
       background: rgba(255,255,255,0.15);
-      /* backdrop-filter: blur(7.2px); kaldırıldı */
     }
     .center-wrap {
       width: 100vw;
@@ -57,7 +56,6 @@
       box-shadow: 0 4px 17px 0 rgba(31,38,135,0.13), 0 1px 11px #b9eaff44;
       border: 1.5px solid rgba(120,120,130,0.09);
       padding: 12px 18px 16px 18px;
-      /* backdrop-filter: blur(7.2px); kaldırıldı */
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -118,7 +116,6 @@
       text-shadow: 0 1px 8px #fff, 0 1px 2px #00bfff33;
       border-bottom: 2px solid #96e2ff;
       letter-spacing: 0.4px;
-      /* backdrop-filter: blur(1.44px); kaldırıldı */
       opacity: 0.93;
     }
     .info-bubble:hover {
@@ -335,7 +332,6 @@
     .comment-form button:hover {
       background: #0080c0;
     }
-    /* Popup glass effect */
     .popup-bg {
       position: fixed;
       left: 0; top: 0;
@@ -354,7 +350,6 @@
     }
     .popup-balloon {
       background: rgba(255,255,255,0.40);
-      /* ŞEFFAFLIK ARTTIRILDI */
       backdrop-filter: blur(9.6px);
       border-radius: 15px;
       border: 1.2px solid #96e2ff;
@@ -408,7 +403,6 @@
       padding: 2px 0;
       line-height: 1.3em;
       letter-spacing: 0.2px;
-      /* Linkler için gözükmesi için alt çizgi yok ve renkli */
     }
     .popup-content a {
       color: #37b7ff;
@@ -452,7 +446,7 @@
         <div class="clock-bubble" id="clockBubble"></div>
       </div>
       <div class="bubble-row">
-        <div class="info-bubble" onclick="showPopup('games')">Games ^~^</div>
+        <div class="info-bubble" onclick="showPopup('mystory')">My story</div>
         <div class="info-bubble" onclick="showPopup('bestfriends')">Bestfriends! ^w^</div>
       </div>
       <div class="profile-center-wrap">
@@ -460,9 +454,9 @@
           <a href="https://instagram.com/sweetiebelle19" target="_blank">@sweetiebelle19</a>
         </div>
         <div class="profile-center">                           
-                            <a href="https://i.imghippo.com/files/Uuu9439juA.jpg" target="_blank" rel="noopener"><img src="https://i.imghippo.com/files/Uuu9439juA.jpg" alt="Uploaded image on Imghippo" border="0"></a>                                                      
+          <a href="https://i.imghippo.com/files/Uuu9439juA.jpg" target="_blank" rel="noopener"><img src="https://i.imghippo.com/files/Uuu9439juA.jpg" alt="Uploaded image on Imghippo" border="0"></a>                                                      
           <div class="profile-texts">
-          <div class="bio">Sweetie Belle <div>
+            <div class="bio">Sweetie Belle</div>
             <div class="small-desc">I think I'm a pony &gt;.&lt;</div>
           </div>
         </div>
@@ -474,51 +468,50 @@
           <input type="text" id="author" placeholder="Your Name" required maxlength="24">
           <textarea id="commentText" rows="2" placeholder="Your message..." required maxlength="180"></textarea>
           <button type="submit">Send</button>
-          <button type="submit">I can't see your messages yet, wait for the new update :(</button>
         </form>
       </div>
     </div>
   </div>
-  <!-- Popup balloon -->
   <div id="popupBG" style="display:none;">
     <div class="popup-bg" onclick="closePopup(event)">
       <div class="popup-balloon" id="popupContent" onclick="event.stopPropagation();"></div>
     </div>
   </div>
   <script>
-    // Clock at top (shows Istanbul time, no label)
+    // Clock at top (shows Malaysia time, UTC+8)
     function updateClockBubble() {
       const now = new Date();
-      const trOffset = new Date().getTimezoneOffset();
-      const trTime = new Date(now.getTime() + ((180 + trOffset) * 60 * 1000));
-      const hh = trTime.getHours().toString().padStart(2,'0');
-      const mm = trTime.getMinutes().toString().padStart(2,'0');
-      const ss = trTime.getSeconds().toString().padStart(2,'0');
+      // Malezya UTC+8 === 480 dakika
+      const MYT_OFFSET = 480; // Malezya: GMT+8
+      const localOffset = now.getTimezoneOffset(); // user's offset (in minutes)
+      const malaysiaNow = new Date(now.getTime() + ((MYT_OFFSET + localOffset) * 60 * 1000));
+      const hh = malaysiaNow.getHours().toString().padStart(2,'0');
+      const mm = malaysiaNow.getMinutes().toString().padStart(2,'0');
+      const ss = malaysiaNow.getSeconds().toString().padStart(2,'0');
       document.getElementById('clockBubble').textContent =
         `${hh}:${mm}:${ss}`;
     }
     updateClockBubble();
     setInterval(updateClockBubble, 1000);
 
-    // Popup open function
+    // Popups
     function showPopup(type) {
       let content = '';
-      if(type === 'games') {
-        content = `<div class="popup-heart">:3</div>
+      if(type === 'mystory') {
+        content = `<div class="popup-heart">💖</div>
           <div class="popup-content">
-            <span  style="color:#37b7ff;font-weight:bold;">League of Legends:</span>
-            <span style="color:#37b7ff;font-weight:bold;">Pony Town:</span>
+            <a href="https://www.fimfiction.net/story/576798/enchanting-stories" target="_blank">
+              Enchanting Stories (FimFiction)
+            </a>
           </div>`;
       } else if(type === 'bestfriends') {
         content = `<div class="popup-heart">(⁠ ⁠◜⁠‿⁠◝⁠ ⁠)</div>
           <div class="popup-content">
             My Instagram best friends:<br>
-            <a
-href="https://instagram.com/rari_aso" target="_blank">@rari_aso</a><br>
+            <a href="https://instagram.com/rari_aso" target="_blank">@rari_aso</a><br>
             <a href="https://instagram.com/sweetiebelle19" target="_blank">@sweetiebelle19</a><br>
             <a href="https://instagram.com/m1miiqz.x1" target="_blank">@m1miiqz.x1</a><br>
-            <a href="https://instagram.com/rainbows._.dashie" target="_blank">@rainbows._.dashie</a><br>     
-            <a 
+            <a href="https://instagram.com/rainbows._.dashie" target="_blank">@rainbows._.dashie</a><br>
           </div>`;
       }
       document.getElementById('popupContent').innerHTML =
@@ -530,7 +523,7 @@ href="https://instagram.com/rari_aso" target="_blank">@rari_aso</a><br>
       document.getElementById('popupBG').style.display = 'none';
     }
 
-    // Comments (no delete)
+    // Comments
     const commentsEl = document.getElementById('comments');
     const form = document.getElementById('commentForm');
     let comments = JSON.parse(localStorage.getItem('blogComments') || "[]");
@@ -546,7 +539,7 @@ href="https://instagram.com/rari_aso" target="_blank">@rari_aso</a><br>
           const el = document.createElement('div');
           el.className = 'comment';
           let badgeText = '';
-          if(c.author.toLowerCase() === 'mimityph638') badgeText = '<span class="badge">admin</span>';
+          if(c.author.toLowerCase() === 'sweetiebelle19') badgeText = '<span class="badge">admin</span>';
           else badgeText = '<span class="badge">guest</span>';
           el.innerHTML = `${badgeText}<span class="author">${c.author}</span> ${c.text} <span class="timestamp">${c.time}</span>`;
           commentsEl.appendChild(el);
@@ -559,27 +552,26 @@ href="https://instagram.com/rari_aso" target="_blank">@rari_aso</a><br>
       const author = authorInput.value.trim();
       const text = document.getElementById('commentText').value.trim();
       if(author && text) {
-        // Istanbul time
+        // Malaysia time (UTC+8)
         const now = new Date();
-        const trOffset = new Date().getTimezoneOffset();
-        const trTime = new Date(now.getTime() + ((180 + trOffset) * 60 * 1000));
-        const hh = trTime.getHours().toString().padStart(2,'0');
-        const mm = trTime.getMinutes().toString().padStart(2,'0');
-        const ss = trTime.getSeconds().toString().padStart(2,'0');
-        const day = trTime.getDate().toString().padStart(2,'0');
-        const month = (trTime.getMonth()+1).toString().padStart(2,'0');
-        const year = trTime.getFullYear();
+        const MYT_OFFSET = 480; // Malezya
+        const localOffset = now.getTimezoneOffset();
+        const malaysiaNow = new Date(now.getTime() + ((MYT_OFFSET + localOffset) * 60 * 1000));
+        const hh = malaysiaNow.getHours().toString().padStart(2,'0');
+        const mm = malaysiaNow.getMinutes().toString().padStart(2,'0');
+        const ss = malaysiaNow.getSeconds().toString().padStart(2,'0');
+        const day = malaysiaNow.getDate().toString().padStart(2,'0');
+        const month = (malaysiaNow.getMonth()+1).toString().padStart(2,'0');
+        const year = malaysiaNow.getFullYear();
         const timeString = `${day}.${month}.${year} ${hh}:${mm}:${ss}`;
         comments.push({author, text, time: timeString});
         localStorage.setItem('blogComments', JSON.stringify(comments));
-        localStorage.setItem('blogAuthor', author); // save name
+        localStorage.setItem('blogAuthor', author);
         renderComments();
         form.reset();
-        authorInput.value = author; // restore name
+        authorInput.value = author;
       }
     });
-
-    // Clear chat fonksiyonu
     function clearChat() {
       if(confirm('Are you sure you want to clear all comments?')) {
         comments = [];
@@ -587,7 +579,6 @@ href="https://instagram.com/rari_aso" target="_blank">@rari_aso</a><br>
         renderComments();
       }
     }
-
     renderComments();
   </script>
 </body>
