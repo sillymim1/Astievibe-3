@@ -17,10 +17,7 @@
       width: 100vw;
       height: 100vh;
       font-family: 'Montserrat', 'Quicksand', Arial, sans-serif;
-      background:    
-            <a href="https://i.imghippo.com/files/ZEIz2114SI.png" target="_blank" rel="noopener"><img src="https://i.imghippo.com/files/ZEIz2114SI.png" alt="Uploaded image on Imghippo" border="0"></a>
-
-  center center / cover no-repeat fixed;
+      background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsIX2Po5kF5iijkA2EwvexNEovbWV7o5Zet4lHhr_R2Y5wzWxiyll6qqM&s=10') center center / cover no-repeat fixed;
       min-height: 100vh;
       min-width: 100vw;
       overflow: hidden;
@@ -460,12 +457,12 @@
       </div>
       <div class="profile-center-wrap">
         <div class="profile-username-top">
-          <a href="https://instagram.com/sweetiebelle19.x1" target="_blank">@sweetiebelle19</a>
+          <a href="https://instagram.com/sweetiebelle19" target="_blank">@sweetiebelle19</a>
         </div>
         <div class="profile-center">
-                            <a href="https://i.imghippo.com/files/Uuu9439juA.jpg" target="_blank" rel="noopener"><img src="https://i.imghippo.com/files/Uuu9439juA.jpg" alt="Uploaded image on Imghippo" border="0"></a>                                                     
+                            <a href="https://i.imghippo.com/files/mjG1071no.jpg" target="_blank" rel="noopener"><img src="https://i.imghippo.com/files/mjG1071no.jpg" alt="Uploaded image on Imghippo" border="0"></a>                          
           <div class="profile-texts">
-            <div class="bio">Pony Girl 😽</div>
+           <div class="bio">Sweetie Belle<div>
             <div class="small-desc">The only thing I know about myself is that I have no brain &gt;.&lt;</div>
           </div>
         </div>
@@ -503,16 +500,15 @@
     updateClockBubble();
     setInterval(updateClockBubble, 1000);
 
-          </div>`;
       } else if(type === 'bestfriends') {
         content = `<div class="popup-heart">(⁠ ⁠◜⁠‿⁠◝⁠ ⁠)</div>
           <div class="popup-content">
             My Instagram best friends:<br>
             <a
 href="https://instagram.com/rari_aso" target="_blank">@rari_aso</a><br>
-            <a href="https://instagram.com/m1miiqz.x1" target="_blank">@m1miiqz.x1</a><br>
             <a  href="https://instagram.com/rainbows._.dashie" target="_blank">@rainbows._.dashie</a><br>
             <a 
+href="https://instagram.com/m1miiqz.x1" target="_blank">@m1miiqz.x1</a><br>
           </div>`;
       }
       document.getElementById('popupContent').innerHTML =
@@ -540,7 +536,7 @@ href="https://instagram.com/rari_aso" target="_blank">@rari_aso</a><br>
           const el = document.createElement('div');
           el.className = 'comment';
           let badgeText = '';
-          if(c.author.toLowerCase() === 'mimityph638') badgeText = '<span class="badge">admin</span>';
+          if(c.author.toLowerCase() === 'astievibe') badgeText = '<span class="badge">admin</span>';
           else badgeText = '<span class="badge">guest</span>';
           el.innerHTML = `${badgeText}<span class="author">${c.author}</span> ${c.text} <span class="timestamp">${c.time}</span>`;
           commentsEl.appendChild(el);
@@ -575,7 +571,7 @@ href="https://instagram.com/rari_aso" target="_blank">@rari_aso</a><br>
 
     // Clear chat fonksiyonu
     function clearChat() {
-      if(confirm('Are you sure you want to clear all comments?')) {
+      if(confirm('Are you sure you want to clear all comments?:D')) {
         comments = [];
         localStorage.setItem('blogComments', "[]");
         renderComments();
@@ -585,4 +581,4 @@ href="https://instagram.com/rari_aso" target="_blank">@rari_aso</a><br>
     renderComments();
   </script>
 </body>
-  </html>
+</html>
