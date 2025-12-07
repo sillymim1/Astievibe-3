@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>its Sweetie Belle!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Frutiger Aero font -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Quicksand:wght@700&display=swap" rel="stylesheet">
   <style>
     html, body {
@@ -17,7 +16,7 @@
       width: 100vw;
       height: 100vh;
       font-family: 'Montserrat', 'Quicksand', Arial, sans-serif;
-      background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsIX2Po5kF5iijkA2EwvexNEovbWV7o5Zet4lHhr_R2Y5wzWxiyll6qqM&s=10') center center / cover no-repeat fixed;
+      background: url('https://i.imghippo.com/files/ZEIz2114SI.png') center center / cover no-repeat fixed;
       min-height: 100vh;
       min-width: 100vw;
       overflow: hidden;
@@ -332,6 +331,20 @@
     .comment-form button:hover {
       background: #0080c0;
     }
+    .form-comment-note {
+      color: #37b7ff;
+      font-size: 0.99em;
+      text-align: center;
+      margin-top: 6px;
+      font-family: 'Quicksand', Arial, sans-serif;
+      opacity: 0.92;
+      text-shadow: 0 1px 8px #fff, 0 1px 2px #00bfff33;
+      background: rgba(255,255,255,0.13);
+      border-radius: 7px;
+      padding: 4px 6px 4px 6px;
+      display: block;
+      border: 1px solid #c5eaff55;
+    }
     .popup-bg {
       position: fixed;
       left: 0; top: 0;
@@ -414,6 +427,15 @@
       color: #ff91b7;
       text-decoration: underline;
     }
+    .popup-press {
+      font-size: 0.98em;
+      color: #ff91b7;
+      margin-bottom: 7px;
+      font-family: 'Quicksand',Arial,sans-serif;
+      display: block;
+      font-weight: normal;
+      text-shadow: 0 1px 8px #fff,0 1px 2px #00bfff33;
+    }
     .popup-close {
       position: absolute;
       top: 8px; right: 14px;
@@ -468,6 +490,7 @@
           <input type="text" id="author" placeholder="Your Name" required maxlength="24">
           <textarea id="commentText" rows="2" placeholder="Your message..." required maxlength="180"></textarea>
           <button type="submit">Send</button>
+          <span class="form-comment-note">I can't see your messages yet, wait for the new update :(</span>
         </form>
       </div>
     </div>
@@ -498,12 +521,14 @@
     function showPopup(type) {
       let content = '';
       if(type === 'mystory') {
-        content = `<div class="popup-heart">💖</div>
-          <div class="popup-content">
+        content =
+          `<div class="popup-heart">💖</div>
+           <span class="popup-press">press link! :3</span>
+           <div class="popup-content">
             <a href="https://www.fimfiction.net/story/576798/enchanting-stories" target="_blank">
               Enchanting Stories (FimFiction)
             </a>
-          </div>`;
+           </div>`;
       } else if(type === 'bestfriends') {
         content = `<div class="popup-heart">(⁠ ⁠◜⁠‿⁠◝⁠ ⁠)</div>
           <div class="popup-content">
@@ -522,14 +547,12 @@
     function closePopup(e) {
       document.getElementById('popupBG').style.display = 'none';
     }
-
     // Comments
     const commentsEl = document.getElementById('comments');
     const form = document.getElementById('commentForm');
     let comments = JSON.parse(localStorage.getItem('blogComments') || "[]");
     let savedAuthor = localStorage.getItem('blogAuthor') || "";
     document.getElementById('author').value = savedAuthor;
-
     function renderComments() {
       commentsEl.innerHTML = '';
       if(comments.length === 0) {
