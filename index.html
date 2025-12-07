@@ -16,7 +16,7 @@
       width: 100vw;
       height: 100vh;
       font-family: 'Montserrat', 'Quicksand', Arial, sans-serif;
-      background: url('https://www.imghippo.com/i/ZEIz2114SI.png') center center / cover no-repeat fixed;
+      background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsIX2Po5kF5iijkA2EwvexNEovbWV7o5Zet4lHhr_R2Y5wzWxiyll6qqM&s=10') center center / cover no-repeat fixed;
       min-height: 100vh;
       min-width: 100vw;
       overflow: hidden;
@@ -532,7 +532,7 @@
       } else if(type === 'bestfriends') {
         content = `<div class="popup-heart">(⁠ ⁠◜⁠‿⁠◝⁠ ⁠)</div>
           <div class="popup-content">
-             My best friends:<br>
+            My best friends:<br>
             <a href="https://instagram.com/rari_aso" target="_blank">@rari_aso</a><br>
             <a href="https://instagram.com/sweetiebelle19" target="_blank">@sweetiebelle19</a><br>
             <a href="https://instagram.com/m1miiqz.x1" target="_blank">@m1miiqz.x1</a><br>
@@ -577,7 +577,7 @@
       if(author && text) {
         // Malaysia time (UTC+8)
         const now = new Date();
-        const MYT_OFFSET = 480; // Malezya
+        const MYT_OFFSET = 480;
         const localOffset = now.getTimezoneOffset();
         const malaysiaNow = new Date(now.getTime() + ((MYT_OFFSET + localOffset) * 60 * 1000));
         const hh = malaysiaNow.getHours().toString().padStart(2,'0');
